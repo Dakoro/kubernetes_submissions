@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-app
+  labels:
+    app: log-output-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output-app
+  template:
+    metadata:
+      labels:
+        app: log-output-app
+    spec:
+      containers:
+      - name: log-output
+        image: log-output-app:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        imagePullPolicy: Never
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: log-output
