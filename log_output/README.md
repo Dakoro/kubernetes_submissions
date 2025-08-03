@@ -1,4 +1,14 @@
 ### Deployment
 ```bash
-./kd3-setup.sh
+make deploy
+```
+
+### Logs
+```bash
+make logs
+```
+
+### Clean cluster
+```bash
+make clean
 ```
