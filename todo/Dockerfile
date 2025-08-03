@@ -23,4 +23,4 @@ ENV PORT=8000
 EXPOSE ${PORT}
 
 # Run the application
-CMD sh -c "uvicorn server.py --host 0.0.0.0 --port ${PORT:-8000}"
+CMD ["sh", "-c", "uv run server.py"]
